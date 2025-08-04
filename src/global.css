@@ -1,0 +1,64 @@
+/* PAlETA DE COLORES*/
+:root {
+  --color-bg: hsl(30, 33%, 94%);
+  --color-surface: #EFE6DC;
+  --color-divider: #D8D6D2;
+
+  --color-primary-dark: #031B2E;
+  --color-secondary-dark: #0B132B;
+
+  --color-accent-warm: #A3786E;
+  --color-accent-soft: #E5C3B5;
+  --color-accent-cool: #3C6E71;
+  --color-success: #2E7D61;
+  --color-accent-muted: #D4A59A;
+
+  --color-text-main: #1C1C1C;
+  --color-text-light: #FFFFFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color:var(--color-bg);
+  line-height: 1.6;
+}
+
+/* Contenedor principal de la aplicación */
+.app-container {
+  min-height: 100vh;
+}
+
+/* Contenedor de propiedades */
+.properties-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Estilos para páginas de login */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+  padding: 2rem;
+}
+
+/* Estilos base para páginas principales */
+.arrendador-page {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+}
