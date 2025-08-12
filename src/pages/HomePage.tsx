@@ -42,7 +42,7 @@ function HomePage() {
       />
 
       <Footer 
-        companyName="Turismo verde"
+        companyName="Turismoo verde"
         year={2025}
       />
     </div>
