@@ -1,4 +1,4 @@
-import { Footer, Features, HeroSection } from '../components/layout';
+import { Footer, Features, HeroSection } from '../../components/layout';
 
 function HomePage() {
   // Datos para las features que coinciden con la imagen
