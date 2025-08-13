@@ -18,7 +18,7 @@ export interface Activity {
   titulo: string;
   tipo: 'tour' | 'experiencia' | 'evento';
   precio: number;
-  imageUrl: string;
+  imagenes: string[];
   ubicacion: string;
   caracteristicas: Feature[];
   calificacion?: number;

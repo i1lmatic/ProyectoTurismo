@@ -2,6 +2,7 @@ import React from 'react';
 import { ActivityCard } from '../../features/tourist/ActivityCard/ActivityCard';
 import type { Activity } from '../../../types';
 import './FeaturedActivities.css';
+import { useNavigate } from 'react-router-dom';
 
 export const featuredActivitiesData: Activity[] = [
   {
@@ -9,13 +10,27 @@ export const featuredActivitiesData: Activity[] = [
     titulo: 'Tour a las Islas Ballestas',
     tipo: 'tour',
     precio: 80,
-    imageUrl: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/f6/4c/bb/paracas.jpg?w=700&h=-1&s=1',
+    imagenes: [
+      
+          "https://live.staticflickr.com/3751/8973127846_c09e43054b_k.jpg",
+          "https://live.staticflickr.com/5489/9387084053_983025f3d6_h.jpg",
+          "https://live.staticflickr.com/8266/8746178810_7cf99099c1_h.jpg",
+          "https://live.staticflickr.com/3751/8973127846_c09e43054b_k.jpg",
+          "https://live.staticflickr.com/5489/9387084053_983025f3d6_h.jpg",
+          "https://live.staticflickr.com/8266/8746178810_7cf99099c1_h.jpg",
+          "https://live.staticflickr.com/3751/8973127846_c09e43054b_k.jpg",
+          "https://live.staticflickr.com/5489/9387084053_983025f3d6_h.jpg",
+          "https://live.staticflickr.com/8266/8746178810_7cf99099c1_h.jpg",
+          "https://live.staticflickr.com/3751/8973127846_c09e43054b_k.jpg",
+          "https://live.staticflickr.com/5489/9387084053_983025f3d6_h.jpg"
+    ],
     ubicacion: 'Paracas, Ica',
     caracteristicas: [
       { nombre: 'Paseo en bote', icono: 'fa-solid fa-ship' },
       { nombre: 'Avistamiento de aves', icono: 'fa-solid fa-crow' },
       { nombre: 'Fauna marina', icono: 'fa-solid fa-fish' },
     ],
+
     calificacion: 4.8,
     fechaDisponible: '2025-09-15',
     descripcion: 'Un increíble tour a las Islas Ballestas, donde podrás observar aves y fauna marina en su hábitat natural.',
@@ -34,7 +49,19 @@ export const featuredActivitiesData: Activity[] = [
     titulo: 'Trekking a la Laguna 69',
     tipo: 'experiencia',
     precio: 120,
-    imageUrl: 'https://www.ytuqueplanes.com/imagenes/fotos/peru/actividades/laguna-69-full-day-desde-huaraz-1563987994-1.jpg',
+    imagenes: [
+          "https://live.staticflickr.com/3751/8973127846_c09e43054b_k.jpg",
+          "https://live.staticflickr.com/5489/9387084053_983025f3d6_h.jpg",
+          "https://live.staticflickr.com/8266/8746178810_7cf99099c1_h.jpg",
+          "https://live.staticflickr.com/3751/8973127846_c09e43054b_k.jpg",
+          "https://live.staticflickr.com/5489/9387084053_983025f3d6_h.jpg",
+          "https://live.staticflickr.com/8266/8746178810_7cf99099c1_h.jpg",
+          "https://live.staticflickr.com/3751/8973127846_c09e43054b_k.jpg",
+          "https://live.staticflickr.com/5489/9387084053_983025f3d6_h.jpg",
+          "https://live.staticflickr.com/8266/8746178810_7cf99099c1_h.jpg",
+          "https://live.staticflickr.com/3751/8973127846_c09e43054b_k.jpg",
+          "https://live.staticflickr.com/5489/9387084053_983025f3d6_h.jpg"
+    ],
     ubicacion: 'Huaraz, Ancash',
     caracteristicas: [
       { nombre: 'Caminata', icono: 'fa-solid fa-person-hiking' },
@@ -59,7 +86,19 @@ export const featuredActivitiesData: Activity[] = [
     titulo: 'City Tour en Cusco',
     tipo: 'tour',
     precio: 60,
-    imageUrl: 'https://www.apurimac.com/wp-content/uploads/2018/08/Plaza-de-Armas-Cusco.jpg',
+    imagenes: [
+          "https://live.staticflickr.com/3751/8973127846_c09e43054b_k.jpg",
+          "https://live.staticflickr.com/5489/9387084053_983025f3d6_h.jpg",
+          "https://live.staticflickr.com/8266/8746178810_7cf99099c1_h.jpg",
+          "https://live.staticflickr.com/3751/8973127846_c09e43054b_k.jpg",
+          "https://live.staticflickr.com/5489/9387084053_983025f3d6_h.jpg",
+          "https://live.staticflickr.com/8266/8746178810_7cf99099c1_h.jpg",
+          "https://live.staticflickr.com/3751/8973127846_c09e43054b_k.jpg",
+          "https://live.staticflickr.com/5489/9387084053_983025f3d6_h.jpg",
+          "https://live.staticflickr.com/8266/8746178810_7cf99099c1_h.jpg",
+          "https://live.staticflickr.com/3751/8973127846_c09e43054b_k.jpg",
+          "https://live.staticflickr.com/5489/9387084053_983025f3d6_h.jpg"
+    ],
     ubicacion: 'Cusco, Cusco',
     caracteristicas: [
       { nombre: 'Cultural', icono: 'fa-solid fa-landmark' },
@@ -82,6 +121,12 @@ export const featuredActivitiesData: Activity[] = [
 ];
 
 export const FeaturedActivities: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleViewDetails = (id: string) => {
+    navigate(`/activity/${id}`);
+  };
+
   return (
     <section className="featured-activities">
       <h2 className="featured-activities__title">Actividades y tours recomendados</h2>
@@ -90,7 +135,7 @@ export const FeaturedActivities: React.FC = () => {
           <ActivityCard
             key={activity.id}
             activity={activity}
-            onViewDetails={() => {}}
+            onViewDetails={handleViewDetails}
           />
         ))}
       </div>

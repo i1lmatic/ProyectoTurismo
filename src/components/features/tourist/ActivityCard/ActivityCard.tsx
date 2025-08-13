@@ -21,7 +21,7 @@ export const ActivityCard: React.FC<ActivityCardProps> = ({
     titulo,
     tipo,
     precio,
-    imageUrl,
+    imagenes, // Cambiado de imageUrl a imagenes
     ubicacion,
     caracteristicas,
     calificacion,
@@ -50,7 +50,7 @@ export const ActivityCard: React.FC<ActivityCardProps> = ({
     >
       <div className="activity-card__image-container">
         <img
-          src={imageUrl}
+          src={imagenes[0] || '/placeholder-activity.jpg'} // Usamos la primera imagen del array
           alt={titulo}
           className="activity-card__image"
           onError={(e) => {

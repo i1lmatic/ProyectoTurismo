@@ -1,19 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
 import HomePage from '../pages/public/HomePage';
 import LoginPage from '../pages/public/LoginPage';
-import ActivityDetail from '../components/features/tourist/ActivityDetail/ActivityDetail';
-import { featuredActivitiesData } from '../components/layout/FeaturedActivities/FeaturedActivities';
-import { useParams } from 'react-router-dom';
+import ActivityDetailPage from '../pages/public/ActivityDetailPage';
+import ReviewPage from '../components/features/tourist/ReviewPage/ReviewPage'; // Importa la nueva página
 
 export const AppRouter = () => {
-  const { id } = useParams<{ id: string }>();
-  const activity = featuredActivitiesData.find((activity) => activity.id === id);
-
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/activity/:id" element={activity ? <ActivityDetail activity={activity} /> : <div>Actividad no encontrada</div>} />
+      <Route path="/activity/:id" element={<ActivityDetailPage />} />
+      <Route path="/activity/:id/review" element={<ReviewPage />} /> {/* Nueva ruta */}
     </Routes>
   );
 };

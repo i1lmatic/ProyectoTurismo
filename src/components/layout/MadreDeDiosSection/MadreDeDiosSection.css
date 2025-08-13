@@ -1,0 +1,42 @@
+.madre-de-dios-section {
+  padding: 20px;
+  text-align: center;
+}
+
+.madre-de-dios-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.destinations-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.destination {
+  margin: 10px;
+  text-align: center;
+}
+
+.destination img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.destination h3 {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.madre-de-dios-section button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}

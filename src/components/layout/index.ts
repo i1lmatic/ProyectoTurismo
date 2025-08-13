@@ -5,3 +5,4 @@ export { default as HeroSection } from './HeroSection/HeroSection';
 export { Header } from './Header/Header';
 export { Locations } from './Locations/Locations';
 export { FeaturedActivities } from './FeaturedActivities/FeaturedActivities';
+export { default as MadreDeDiosSection } from './MadreDeDiosSection/MadreDeDiosSection';

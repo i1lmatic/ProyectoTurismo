@@ -1,0 +1,246 @@
+/* ===== Layout general ===== */
+.review-page {
+  display: flex;
+  height: auto;
+  background: #fff;
+  margin-top: 20px;
+}
+
+/* Lateral fijo (quieto) */
+.review-sidebar {
+  width: 36%;
+  background-color: #F6F7F6;
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+
+  position: static;
+  top: 0;
+  height: auto;
+  align-items: flex-start; /* títulos alineados a la izq */
+}
+
+/* Título grande del lateral */
+.review-title {
+  font-family: var(--font-family-title, system-ui, -apple-system, "Segoe UI", Roboto, Arial);
+  font-weight: 800;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.05;
+  color: var(--color-primary-green, #0f7b3f);
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+/* Tarjeta de actividad en lateral */
+.activity-card {
+  border: 1px solid #E1E4E8;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  max-width: 370px;
+}
+.activity-card__imgwrap {
+  padding: 22px;
+  padding-bottom: 0;
+}
+.activity-card__img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+.activity-card__body {
+  padding: 16px 22px 18px;
+}
+.activity-card__title {
+  margin: 0 0 8px 0;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #0c1f0f;
+}
+.activity-card__by {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+.activity-card__by a {
+  color: #0c1f0f;
+  text-decoration: underline;
+}
+
+/* línea “¿No es el correcto? Cambiar actividad” */
+.activity-change-line {
+  font-size: 15px;
+  color: #4b5563;
+  margin: 14px 0 0;
+}
+.linklike {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #0B5FFF;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+}
+
+/* Píldora verde “Borrador guardado” */
+.draft-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  background: #CFF3D3;
+  color: #0f7b3f;
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-weight: 600;
+}
+.draft-pill__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: #0f7b3f;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* Columna derecha con scroll */
+.review-form-container {
+  width: 64%;
+  padding: 48px 56px;
+  height: auto;
+  overflow-y: auto;
+}
+
+/* Contenido centrado y ancho cómodo */
+.form-content {
+  max-width: 610px; /* ajusta 640–760 según gusto */
+  margin: 0 auto;
+}
+
+/* ===== Secciones del formulario ===== */
+.form-section { margin-bottom: 28px; }
+.form-section-title { font-size: 22px; font-weight: 700; margin: 0 0 14px 0; }
+
+/* ===== Calificación tipo “bolas” ===== */
+.rating-selector { display: flex; gap: 14px; align-items: center; }
+.rating-circles { display: flex; gap: 12px; }
+
+.rating-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 2px solid var(--color-primary-green, #0f7b3f);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  transition: transform .12s ease, background-color .12s ease;
+}
+.rating-circle:hover { transform: scale(1.05); }
+.rating-circle.active { background-color: var(--color-primary-green, #0f7b3f); }
+.rating-label { min-width: 88px; font-weight: 600; color: #2E3A2E; }
+
+/* ===== Select de mes ===== */
+.date-select {
+  width: 280px;
+  padding: 12px 40px 12px 12px;
+  border: 1px solid #CED4DA;
+  border-radius: 10px;
+  font-size: 15px;
+  appearance: none;
+  background-color: #fff;
+  background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3e%3cpolyline points="6 9 12 15 18 9"%3e%3c/polyline%3e%3c/svg%3e');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px;
+}
+
+/* ===== Inputs ===== */
+textarea,
+input[type="text"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #CED4DA;
+  border-radius: 10px;
+  font: inherit;
+  box-sizing: border-box;
+}
+textarea { min-height: 110px; resize: vertical; } /* más corto */
+
+/* ===== Con quién fuiste ===== */
+.companion-options { display: flex; gap: 10px; flex-wrap: wrap; }
+.companion-button {
+  background-color: #F6F7F6;
+  border: 1px solid #CED4DA;
+  border-radius: 999px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color .12s ease, border-color .12s ease;
+}
+.companion-button:hover { background: #ECEFEC; }
+.companion-button.active {
+  background: #E9F6EC;
+  border-color: var(--color-primary-green, #0f7b3f);
+  color: var(--color-primary-green, #0f7b3f);
+  font-weight: 600;
+}
+
+/* ===== Contadores ===== */
+.char-count { font-size: 12px; color: #67727E; text-align: right; margin-top: 6px; }
+.char-count.warn { color: #B84040; }
+
+/* ===== Fotos (placeholder) ===== */
+.optional-text { font-size: 14px; color: #67727E; margin-bottom: 10px; }
+.photo-upload-box {
+  border: 2px dashed #CED4DA;
+  border-radius: 14px;
+  padding: 32px;
+  text-align: center;
+  color: #67727E;
+  cursor: pointer;
+}
+.upload-icon { font-size: 24px; }
+
+/* ===== Checkbox ===== */
+.checkbox-container {
+  display: block; position: relative; padding-left: 28px;
+  cursor: pointer; font-size: 14px; user-select: none;
+}
+.checkbox-container input { position: absolute; opacity: 0; height: 0; width: 0; }
+.checkmark {
+  position: absolute; top: 0; left: 0; height: 20px; width: 20px;
+  background-color: #fff; border: 1px solid #9AA6B2; border-radius: 4px;
+}
+.checkbox-container input:checked ~ .checkmark {
+  background-color: var(--color-primary-green, #0f7b3f); border-color: var(--color-primary-green, #0f7b3f);
+}
+.checkmark:after { content: ""; position: absolute; display: none; }
+.checkbox-container input:checked ~ .checkmark:after { display: block; }
+.checkbox-container .checkmark:after {
+  left: 6px; top: 2px; width: 5px; height: 10px;
+  border: solid #fff; border-width: 0 3px 3px 0; transform: rotate(45deg);
+}
+
+/* ===== Footer ===== */
+.form-footer { margin-top: 28px; }
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+  .review-page { height: auto; }
+  .review-sidebar {
+    position: static; height: auto; padding: 28px 20px; text-align: center;
+  }
+  .review-form-container { height: auto; padding: 24px 20px; }
+  .form-content { max-width: 100%; }
+}

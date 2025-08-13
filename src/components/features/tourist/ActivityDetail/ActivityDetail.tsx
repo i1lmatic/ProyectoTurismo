@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { LuPencilLine, LuHeart } from 'react-icons/lu'; // Importa los íconos
 import { Button } from '../../../../components/ui/Button/Button';
-// IMPORTACIÓN DE AMBOS MODALES
+// IMPORTACIÓN DE OTROS MODALES
 import ReportModal from '../ReportModal/ReportModal';
 import ReportDescriptionModal from '../ReportDescriptionModal/ReportDescriptionModal';
 import ReportConfirmationModal from '../ReportConfirmationModal/ReportConfirmationModal'; // Importar el nuevo modal
@@ -23,10 +24,10 @@ const ActivityDetail: React.FC<ActivityDetailProps> = ({ activity }) => {
   const [showStickyNav, setShowStickyNav] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
 
-  // NUEVOS ESTADOS PARA CONTROLAR EL FLUJO DE LOS MODALES
+  // Estados para los modales de reporte (el modal de revisión ya no existe)
   const [showReasonModal, setShowReasonModal] = useState(false);
   const [showDescriptionModal, setShowDescriptionModal] = useState(false);
-  const [showConfirmationModal, setShowConfirmationModal] = useState(false); // Nuevo estado para el modal de confirmación
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [selectedReason, setSelectedReason] = useState('');
 
   useEffect(() => {
@@ -47,7 +48,7 @@ const ActivityDetail: React.FC<ActivityDetailProps> = ({ activity }) => {
 
   const activityData = {
     ...activity,
-    imagenes: activity.imageUrl ? [activity.imageUrl] : [],
+    imagenes: activity.imagenes || [],
     descripcion: activity.descripcion || 'No hay descripción disponible para esta actividad.',
     anfitrion: activity.anfitrion || {
       nombre: "Anfitrión Desconocido",
@@ -58,6 +59,11 @@ const ActivityDetail: React.FC<ActivityDetailProps> = ({ activity }) => {
       indiceRespuestas: 0,
       tiempoRespuesta: "Desconocido"
     }
+  };
+
+  // FUNCIÓN PARA ABRIR LA PÁGINA DE REVISIÓN
+  const handleOpenReviewPage = () => {
+    navigate(`/activity/${activityData.id}/review`);
   };
 
   // FUNCIÓN PARA ABRIR EL PRIMER MODAL
@@ -118,12 +124,33 @@ const ActivityDetail: React.FC<ActivityDetailProps> = ({ activity }) => {
         </nav>
       </div>
       <div className="activity-detail__header">
-        <Button variant="ghost" onClick={() => navigate(-1)}>
+        <Button
+          variant="ghost"
+          onClick={() => navigate('/')}
+        >
           Volver
         </Button>
       </div>
       <div className="activity-detail__info">
-        <h1>{activityData.titulo}</h1>
+        <div className="activity-detail__title-row">
+          <h1>{activityData.titulo}</h1>
+          <div className="activity-detail__actions">
+            <Button variant="outline" size="sm">
+              Compartir
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="button-revisar"
+              onClick={handleOpenReviewPage}
+            >
+              <LuPencilLine size={16} />Revisar
+            </Button>
+            <Button variant="outline" size="sm">
+              <LuHeart size={16} />Guardar
+            </Button>
+          </div>
+        </div>
         <div className="activity-detail__meta">
           <span>🏞️ {activityData.tipo}</span>
           <span>📍 {activityData.ubicacion}</span>
@@ -152,7 +179,7 @@ const ActivityDetail: React.FC<ActivityDetailProps> = ({ activity }) => {
           <div className="activity-detail__section" id="ubicacion">
             <h2>Ubicación</h2>
             <div className="activity-map-container">
-              <PropertyMap
+               <PropertyMap
                 latitude={-12.59}
                 longitude={-69.19}
                 locationGroups={[{ title: "Ubicación de la Actividad", locations: [activityData.ubicacion] }]}

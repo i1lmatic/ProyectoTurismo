@@ -1,54 +1,54 @@
-/* src/arrendatario/LandlordSection/LandlordSection.css */
+/* src/anfitrion/HostSection/HostSection.css */
 
-.landlord-section { /* Nueva clase para el contenedor principal de esta sección */
+.host-section {
   margin-bottom: 30px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #eee; /* Si quieres el borde inferior, mantenlo aquí */
+  border-bottom: 1px solid #eee;
 }
 
-.landlord-section h2 {
+.host-section h2 {
   font-size: 1.8em;
   margin-bottom: 15px;
 }
 
-/* ARRENDADOR SECTION - Contenido */
-.arrendador-contenido {
+/* HOST SECTION - Contenido */
+.anfitrion-contenido {
   display: flex;
   gap: 30px;
-  flex-wrap: wrap; /* Permite que se envuelva en pantallas más pequeñas */
+  flex-wrap: wrap;
 }
 
-.arrendador-card {
+.anfitrion-card {
   border: 1px solid #ddd;
   border-radius: 12px;
   padding: 20px;
-  flex: 1; /* Permite que crezca */
-  min-width: 280px; /* Ancho mínimo para la tarjeta */
+  flex: 1;
+  min-width: 280px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-.arrendador-user {
+.anfitrion-user {
   display: flex;
   align-items: center;
   gap: 15px;
   margin-bottom: 15px;
 }
 
-.arrendador-user h3 {
+.anfitrion-user h3 {
   margin: 0;
   font-size: 1.4em;
 }
 
-.arrendador-user p {
+.anfitrion-user p {
   margin: 0;
   font-size: 0.9em;
   color: #777;
 }
 
-.arrendador-badges {
+.anfitrion-badges {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -56,7 +56,7 @@
   margin-bottom: 20px;
 }
 
-.arrendador-badges span {
+.anfitrion-badges span {
   background-color: #f0f0f0;
   padding: 5px 10px;
   border-radius: 20px;
@@ -66,23 +66,23 @@
   gap: 5px;
 }
 
-.arrendador-badges svg { /* Target Lucide React SVG icons */
-  color: #071e3d; /* Color primario para los iconos */
-  width: 1em; /* Adjust size for SVG */
-  height: 1em; /* Adjust size for SVG */
+.anfitrion-badges svg {
+  color: #071e3d;
+  width: 1em;
+  height: 1em;
 }
 
-.arrendador-info {
-  flex: 2; /* Permite que ocupe más espacio */
-  min-width: 280px; /* Ancho mínimo */
+.anfitrion-info {
+  flex: 2;
+  min-width: 280px;
 }
 
-.arrendador-info h4 {
+.anfitrion-info h4 {
   font-size: 1.2em;
   margin-bottom: 10px;
 }
 
-.arrendador-info p {
+.anfitrion-info p {
   font-size: 0.95em;
   line-height: 1.5;
   margin-bottom: 10px;
@@ -108,13 +108,13 @@
 
 /* Media Queries for Responsiveness (if needed specifically for this section) */
 @media (max-width: 992px) {
-  .arrendador-contenido {
-    flex-direction: column; /* Apila la tarjeta y la info del arrendador */
+  .anfitrion-contenido {
+    flex-direction: column;
     gap: 20px;
   }
-  .arrendador-card,
-  .arrendador-info {
-    min-width: unset; /* Elimina la restricción de ancho mínimo */
-    width: 100%; /* Ocupa todo el ancho */
+  .anfitrion-card,
+  .anfitrion-info {
+    min-width: unset;
+    width: 100%;
   }
 }

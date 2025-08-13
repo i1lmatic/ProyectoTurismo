@@ -1,18 +1,32 @@
 import './Header.css';
 import { LuSearch, LuMenu, LuUser, LuPhone } from 'react-icons/lu';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-export const Header = () => {
+interface HeaderProps {
+  isHomePage?: boolean;
+}
+
+export const Header: React.FC<HeaderProps> = ({ isHomePage }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const isLoginPage = location.pathname === '/login';
 
   const handleUserIconClick = () => {
     navigate('/login');
   };
 
+  const handleLogoClick = () => {
+    navigate('/');
+  };
+
+  const headerStyle = {
+    backgroundColor: isHomePage ? 'transparent' : 'var(--color-deep-blue)',
+  };
+
   return (
-    <header className="header">
+    <header className="header" style={headerStyle}>
       <div className="header-left">
-        <div className="logo">
+        <div className="logo" onClick={handleLogoClick} style={{cursor: 'pointer'}}>
           <span className="logo-text">KANDAMO</span>
           <span className="logo-icon"></span> {/* Icono rosa */}
         </div>

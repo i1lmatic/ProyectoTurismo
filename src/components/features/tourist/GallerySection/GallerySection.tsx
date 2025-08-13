@@ -1,4 +1,3 @@
-// src/arrendatario/GallerySection/GallerySection.tsx
 import React, { useState } from 'react';
 import { LuLayoutGrid } from 'react-icons/lu';
 import './GallerySection.css';
@@ -25,32 +24,33 @@ const GallerySection: React.FC<GallerySectionProps> = ({ imagenes }) => {
     setImagenActual(index);
   };
 
+  // Solo mostramos la primera imagen como principal y las siguientes dos como miniaturas
+  const mainImage = imagenes[0];
+  const thumbs = imagenes.slice(1, 3);
+  const otherImages = imagenes.slice(3);
+
   return (
     <>
       <div className="gallery-section">
         <div className="gallery-left">
           <img
-            src={imagenes[imagenActual]}
+            src={mainImage}
             alt="Imagen principal"
             className="gallery-main-image"
             onClick={() => setMostrarLightbox(true)}
           />
         </div>
         <div className="gallery-right">
-          {imagenes
-            .filter((_, index) => index !== imagenActual)
-            .slice(0, 4)
-            .map((img, index) => (
-              <div
-                className="gallery-thumb"
-                key={index}
-                onClick={() => cambiarImagenPrincipal(imagenes.indexOf(img))}
-              >
-                <img src={img} alt={`Miniatura ${index + 1}`} />
-              </div>
-            ))}
+          {thumbs.map((img, index) => (
+            <div
+              className="gallery-thumb"
+              key={index}
+              onClick={() => cambiarImagenPrincipal(imagenes.indexOf(img))}
+            >
+              <img src={img} alt={`Miniatura ${index + 1}`} />
+            </div>
+          ))}
         </div>
-        {/* Botón movido al final del contenedor de la galería */}
         <button className="show-all-photos-btn" onClick={toggleTodasFotos}>
           <span className="photos-icon">
             <LuLayoutGrid />
@@ -59,6 +59,7 @@ const GallerySection: React.FC<GallerySectionProps> = ({ imagenes }) => {
         </button>
       </div>
 
+      {/* El resto de la lógica de los modales (lightbox y todas las fotos) se mantiene igual */}
       {mostrarTodasFotos && (
         <div className="todas-fotos-overlay">
           <div className="todas-fotos-container-horizontal">

@@ -1,4 +1,8 @@
-import { Footer, Features, HeroSection, Header, Locations, FeaturedActivities } from '../../components/layout';
+import { Footer, Features, HeroSection, Header, Locations, FeaturedActivities, MadreDeDiosSection } from '../../components/layout';
+
+interface HomePageProps {
+  isHomePage?: boolean;
+}
 
 function HomePage() {
   // Datos para las features que coinciden con la imagen
@@ -34,9 +38,9 @@ function HomePage() {
 
   return (
     <div className="app-container">
-      <Header />
+      <Header isHomePage={true} />
       
-      <HeroSection 
+      <HeroSection
         images={[
           "https://live.staticflickr.com/8266/8746178810_7cf99099c1_h.jpg",
           "https://live.staticflickr.com/3751/8973127846_c09e43054b_k.jpg",
@@ -52,6 +56,8 @@ function HomePage() {
       />
 
       <Locations />
+
+      <MadreDeDiosSection />
 
       <FeaturedActivities />
 
