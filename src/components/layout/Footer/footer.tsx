@@ -1,4 +1,6 @@
 import './Footer.css';
+import { LuFacebook, LuYoutube, LuInstagram, LuTwitter } from 'react-icons/lu';
+import { FaTiktok } from 'react-icons/fa';
 
 export interface FooterProps {
   companyName: string;
@@ -10,42 +12,62 @@ export const Footer = ({ companyName, year }: FooterProps) => {
     <footer className="footer">
       <div className="footer-columns">
         <div className="footer-column">
-          <h4>Asistencia</h4>
-          <a href="#">Centro de ayuda</a>
-          <a href="#">AirCover</a>
-          <a href="#">Antidiscriminación</a>
-          <a href="#">Apoyo para discapacitados</a>
-          <a href="#">Opciones de cancelación</a>
-          <a href="#">Problemas en el vecindario</a>
+          <h4>About Klook</h4>
+          <a href="#">About us</a>
+          <a href="#">Newsroom</a>
+          <a href="#">Klook Blog</a>
+          <a href="#">Careers</a>
+          <a href="#">Sustainability</a>
         </div>
 
         <div className="footer-column">
-          <h4>Modo anfitrión</h4>
-          <a href="#">Pon tu espacio en {companyName}</a>
-          <a href="#">Ofrece tu experiencia</a>
-          <a href="#">AirCover para anfitriones</a>
-          <a href="#">Recursos para anfitriones</a>
-          <a href="#">Foro comunitario</a>
-          <a href="#">Buscar un coanfitrión</a>
+          <h4>Partnerships</h4>
+          <a href="#">Merchant sign up</a>
+          <a href="#">Merchant log in</a>
+          <a href="#">Affiliate Partnership</a>
+          <a href="#">Influencer Program</a>
+          <a href="#">Agent Marketplace</a>
+          <a href="#">Klook Partner Hub</a>
+          <a href="#">Collaborate with Klook</a>
         </div>
 
         <div className="footer-column">
-          <h4>{companyName}</h4>
-          <a href="#">Novedades</a>
-          <a href="#">Sala de prensa</a>
-          <a href="#">Carreras</a>
-          <a href="#">Inversionistas</a>
-          <a href="#">Espacios en {companyName}.org</a>
+          <h4>Terms of use</h4>
+          <a href="#">General terms of use</a>
+          <a href="#">Privacy policy</a>
+          <a href="#">Cookie Policy</a>
+          <a href="#">Bug Bounty Program</a>
+          <a href="#">Animal Welfare Policy</a>
+        </div>
+
+        <div className="footer-column">
+          <h4>Payment channels</h4>
+          <div className="payment-channels-grid">
+            {/* Aquí irían los iconos de pago si se usaran de react-icons, o imágenes */}
+            <div className="payment-icon visa"></div>
+            <div className="payment-icon mastercard"></div>
+            <div className="payment-icon amex"></div>
+            <div className="payment-icon jcb"></div>
+            <div className="payment-icon unionpay"></div>
+            <div className="payment-icon discover"></div>
+            <div className="payment-icon diners"></div>
+            <div className="payment-icon apple-pay"></div>
+            <div className="payment-icon google-pay"></div>
+            <div className="payment-icon paypal"></div>
+          </div>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <p>© {year} {companyName}, Inc.</p>
-        <div className="footer-bottom-links">
-          <a href="#">Privacidad</a>
-          <a href="#">Términos</a>
-          <a href="#">Mapa del sitio</a>
+        <p>© {year} {companyName}. All rights reserved.</p>
+        <div className="footer-social-links">
+          <a href="#"><LuFacebook size={24} /></a>
+          <a href="#"><LuYoutube size={24} /></a>
+          <a href="#"><LuInstagram size={24} /></a>
+          <a href="#"><LuTwitter size={24} /></a>
+          <a href="#"><FaTiktok size={24} /></a>
         </div>
+        <button className="scroll-to-top">↑</button>
       </div>
     </footer>
   );

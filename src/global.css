@@ -1,20 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@400;700&display=swap');
+
 /* PAlETA DE COLORES*/
 :root {
-  --color-bg: hsl(30, 33%, 94%);
-  --color-surface: #EFE6DC;
-  --color-divider: #D8D6D2;
+  --color-emerald-green: #2E8B57; /* Selva */
+  --color-deep-blue: #0F4C81;    /* Ríos y atardeceres */
+  --color-old-gold: #D4AF37;     /* Luxe y biodiversidad */
+  --color-elegant-black: #111111; /* Tipografía y contraste */
 
-  --color-primary-dark: #031B2E;
-  --color-secondary-dark: #0B132B;
+  --color-text-main: var(--color-elegant-black);
+  --color-text-light: #FFFFFF; /* Mantener blanco para texto claro si es necesario */
 
-  --color-accent-warm: #A3786E;
-  --color-accent-soft: #E5C3B5;
-  --color-accent-cool: #3C6E71;
-  --color-success: #2E7D61;
-  --color-accent-muted: #D4A59A;
-
-  --color-text-main: #1C1C1C;
-  --color-text-light: #FFFFFF;
+  --font-family-title: 'Playfair Display', serif;
+  --font-family-text: 'Inter', sans-serif;
 }
 
 * {
@@ -24,8 +21,8 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color:var(--color-bg);
+  font-family: var(--font-family-text);
+  background-color: var(--color-bg); /* Mantener el color de fondo existente o ajustarlo si es necesario */
   line-height: 1.6;
 }
 

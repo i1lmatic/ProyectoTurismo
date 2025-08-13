@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Input } from '../Input/Input';
-import { Button } from '../Button/Button';
+import { Input } from '../../ui/Input/Input';
+import { Button } from '../../ui/Button/Button';
 import './LoginForm.css';
 
 export interface LoginFormProps {

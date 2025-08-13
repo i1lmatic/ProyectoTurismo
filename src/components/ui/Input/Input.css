@@ -21,7 +21,7 @@
 .ubikha-input {
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 2px solid var(--color-divider);
+  border: 2px solid var(--color-old-gold);
   border-radius: 0.5rem;
   font-size: 1rem;
   font-family: inherit;
@@ -32,12 +32,13 @@
 
 .ubikha-input:focus {
   outline: none;
-  border-color: var(--color-accent-cool);
-  box-shadow: 0 0 0 3px rgba(60, 110, 113, 0.1);
+  border-color: var(--color-emerald-green);
+  box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.2);
 }
 
 .ubikha-input::placeholder {
-  color: var(--color-divider);
+  color: var(--color-text-main);
+  opacity: 0.6;
 }
 
 /* Estados del input */
@@ -51,8 +52,8 @@
 }
 
 .ubikha-input--disabled {
-  background-color: var(--color-surface);
-  color: var(--color-divider);
+  background-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.4);
   cursor: not-allowed;
 }
 

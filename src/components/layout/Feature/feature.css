@@ -1,27 +1,32 @@
+/* =========================================================
+ * SECCIÓN DE CARACTERÍSTICAS
+ * ========================================================= */
+
 /* Contenedor principal de la sección */
 .features-section {
   width: 100%;
-  padding: 4rem 2rem; /* Espaciado vertical y horizontal */
+  padding: 4rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
+  background-color: var(--color-bg); /* Fondo blanco para esta sección */
+  color: var(--color-text-main); /* Color de texto para el fondo blanco */
 }
 
 /* Título principal de la sección */
 .section-title {
-  font-size: 2rem; /* Tamaño del texto del título */
+  font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 3rem; /* Espacio debajo del título */
-  color: #333;
+  margin-bottom: 3rem;
+  color: var(--color-text-main); /* Asegura que el título sea visible sobre el fondo blanco */
+  font-family: var(--font-family-title);
 }
 
 /* Contenedor de las tarjetas */
 .features-grid {
   display: grid;
-  /* Crea 4 columnas en desktop, y se ajusta a menos en móvil */
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem; /* Espacio entre las tarjetas */
+  gap: 2rem;
   width: 100%;
   max-width: 1100px;
 }
@@ -38,12 +43,12 @@
 .feature-icon {
   width: 60px;
   height: 60px;
-  border-radius: 50%; /* Lo hace un círculo perfecto */
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
-  border: 2px solid; /* Borde sólido */
+  border: 2px solid;
 }
 
 /* Tamaño del ícono dentro del círculo */
@@ -56,38 +61,29 @@
   font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  color: #000;
+  color: var(--color-text-main);
+  font-family: var(--font-family-title);
 }
 
 /* Descripción de cada tarjeta */
 .feature-description {
   font-size: 0.9rem;
-  color: #555;
+  color: var(--color-text-main);
   line-height: 1.5;
 }
 
-/* --- Colores específicos para cada ícono (como en la imagen) --- */
-
-/* 1er ícono (rosa) */
+/* Colores específicos para cada ícono */
 .feature-card:nth-child(1) .feature-icon {
-  border-color: #ffc2d1;
-  color: #e67c96;
+  border-color: var(--color-old-gold);
+  color: var(--color-old-gold);
 }
 
-/* 2do ícono (verde) */
 .feature-card:nth-child(2) .feature-icon {
-  border-color: #c8e6c9;
-  color: #66bb6a;
+  border-color: var(--color-emerald-green);
+  color: var(--color-emerald-green);
 }
 
-/* 3er ícono (amarillo) */
 .feature-card:nth-child(3) .feature-icon {
-  border-color: #fff9c4;
-  color: #ffd600;
-}
-
-/* 4to ícono (azul) */
-.feature-card:nth-child(4) .feature-icon {
-  border-color: #b3e5fc;
-  color: #4fc3f7;
+  border-color: var(--color-deep-blue);
+  color: var(--color-deep-blue);
 }

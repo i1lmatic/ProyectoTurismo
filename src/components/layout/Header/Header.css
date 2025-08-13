@@ -1,0 +1,90 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  color: var(--color-text-light); /* Texto blanco para el header transparente */
+  z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  font-family: var(--font-family-title);
+  letter-spacing: 0.1em; /* Tracking amplio */
+}
+
+.logo-text {
+  margin-right: 5px;
+}
+
+.logo-icon {
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-old-gold); /* Rosa */
+  border-radius: 50%;
+}
+
+.header-nav {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-link {
+  color: var(--color-text-light);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-link:hover {
+  opacity: 0.8;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.phone-number {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+}
+
+.user-icon {
+  color: var(--color-text-light);
+}
+
+.enquire-button {
+  background-color: var(--color-emerald-green); /* Rosa fuerte */
+  color: var(--color-text-light);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.enquire-button:hover {
+  background-color: var(--color-old-gold);
+}

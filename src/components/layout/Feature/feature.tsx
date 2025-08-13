@@ -1,34 +1,33 @@
 import './feature.css';
 
-// Define la estructura de una sola característica
-interface Feature {
+import React from 'react';
+import './feature.css';
+
+export interface FeatureItem {
   title: string;
+  subtitle: string;
   description: string;
-  icon: string; // La clase del ícono, ej: 'fa-solid fa-phone'
+  icon: string;
 }
 
-// Define las props que el componente principal va a recibir
 export interface FeaturesProps {
-  mainTitle: string;
-  items: Feature[]; // Un array (lista) de características
+  mainTitle?: string;
+  items: FeatureItem[];
 }
 
-export const Features = ({ mainTitle, items }: FeaturesProps) => {
+export const Features: React.FC<FeaturesProps> = ({ mainTitle, items }) => {
   return (
     <section className="features-section">
-      <h2 className="section-title">{mainTitle}</h2>
+      {mainTitle && <h2 className="features-main-title">{mainTitle}</h2>}
       <div className="features-grid">
-        {/*
-        Usamos el método .map() para recorrer la lista de 'items'
-        y crear una tarjeta para cada uno, evitando repetir código.
-        */}
-        {items.map((feature, index) => (
+        {items.map((item, index) => (
           <div className="feature-card" key={index}>
             <div className="feature-icon">
-              <i className={feature.icon}></i>
+              <i className={item.icon}></i>
             </div>
-            <h3 className="feature-title">{feature.title}</h3>
-            <p className="feature-description">{feature.description}</p>
+            <h3 className="feature-title">{item.title}</h3>
+            {item.subtitle && <p className="feature-subtitle">{item.subtitle}</p>}
+            <p className="feature-description">{item.description}</p>
           </div>
         ))}
       </div>

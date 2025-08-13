@@ -1,4 +1,4 @@
-import { Footer, Features, HeroSection } from '../../components/layout';
+import { Footer, Features, HeroSection, Header, Locations, FeaturedActivities } from '../../components/layout';
 
 function HomePage() {
   // Datos para las features que coinciden con la imagen
@@ -34,12 +34,26 @@ function HomePage() {
 
   return (
     <div className="app-container">
-      <HeroSection />
+      <Header />
+      
+      <HeroSection 
+        images={[
+          "https://live.staticflickr.com/8266/8746178810_7cf99099c1_h.jpg",
+          "https://live.staticflickr.com/3751/8973127846_c09e43054b_k.jpg",
+          "https://live.staticflickr.com/5489/9387084053_983025f3d6_h.jpg"
+         
+         
+        ]} 
+      />
       
       <Features 
-        mainTitle={featuresData.mainTitle}
-        items={featuresData.items}
+        mainTitle={featuresData.mainTitle} 
+        items={featuresData.items} 
       />
+
+      <Locations />
+
+      <FeaturedActivities />
 
       <Footer 
         companyName="Turismoo verde"
@@ -50,4 +64,3 @@ function HomePage() {
 }
 
 export default HomePage;
-
