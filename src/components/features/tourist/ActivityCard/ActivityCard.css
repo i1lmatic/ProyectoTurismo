@@ -1,4 +1,4 @@
-.property-card {
+.activity-card {
   border: 1px solid #e0e0e0;
   border-radius: 12px;
   overflow: hidden;
@@ -8,30 +8,30 @@
   position: relative;
 }
 
-.property-card:hover {
+.activity-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-.property-card__image-container {
+.activity-card__image-container {
   position: relative;
   height: 200px;
   overflow: hidden;
 }
 
-.property-card__image {
+.activity-card__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s;
 }
 
-.property-card:hover .property-card__image {
+.activity-card:hover .activity-card__image {
   transform: scale(1.03);
 }
 
 /* Estilos para el elemento flotante del tipo de propiedad */
-.property-card__type-floating {
+.activity-card__type-floating {
   /* Posicionamiento */
   position: absolute;
   top: 10px;
@@ -68,7 +68,7 @@
 }
 
 
-.property-card__save {
+.activity-card__save {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -86,16 +86,16 @@
   z-index: 15;
 }
 
-.property-card__save:hover {
+.activity-card__save:hover {
   background: rgba(255, 255, 255, 1);
   transform: scale(1.1);
 }
 
-.property-card__save.saved {
+.activity-card__save.saved {
   color: #ff385c;
 }
 
-.property-card__rating {
+.activity-card__rating {
   position: absolute;
   bottom: 10px;
   left: 10px;
@@ -107,62 +107,62 @@
   z-index: 10;
 }
 
-.property-card__content {
+.activity-card__content {
   padding: 16px;
 }
 
-.property-card__header {
+.activity-card__header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 8px;
 }
 
-.property-card__title {
+.activity-card__title {
   margin: 0;
   font-size: 18px;
   font-weight: 600;
   color: #333;
 }
 
-.property-card__location {
+.activity-card__location {
   margin: 4px 0;
   font-size: 14px;
   color: #666;
 }
 
-.property-card__price {
+.activity-card__price {
   margin: 8px 0;
   display: flex;
   align-items: flex-end;
 }
 
-.property-card__price-amount {
+.activity-card__price-amount {
   font-size: 20px;
   font-weight: 700;
   color: #333;
 }
 
-.property-card__price-period {
+.activity-card__price-period {
   font-size: 14px;
   color: #666;
   margin-left: 4px;
   margin-bottom: 2px;
 }
 
-.property-card__availability {
+.activity-card__availability {
   margin: 4px 0;
   font-size: 14px;
   color: #666;
 }
 
-.property-card__features {
+.activity-card__features {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin: 12px 0;
 }
 
-.property-card__feature {
+.activity-card__feature {
   background: #f5f5f5;
   padding: 4px 8px;
   border-radius: 4px;
@@ -171,14 +171,14 @@
 }
 
 /* Estilos actualizados para el botón 'Reservar' */
-.property-card__actions {
+.activity-card__actions {
   display: flex;
   gap: 8px;
   margin-top: 12px;
   justify-content: center;
 }
 
-.property-card__button {
+.activity-card__button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -194,7 +194,7 @@
   text-decoration: none;
 }
 
-.property-card__button:hover {
+.activity-card__button:hover {
   background-color: #e0e0e0; /* Fondo gris claro al pasar el ratón */
   color: #1a4d2e; /* Texto verde oscuro al pasar el ratón */
   border: 1px solid #1a4d2e; /* Borde verde oscuro al pasar el ratón */
