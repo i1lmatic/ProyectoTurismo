@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Input } from '../../ui/Input/Input';
 import { Button } from '../../ui/Button/Button';
 import './LoginForm.css';
 
 export interface LoginFormProps {
-  onSubmit?: (credentials: { num_celular: string; password: string }) => void;
+  onSubmit?: (credentials: { email: string; password: string }) => void;
   loading?: boolean;
   error?: string;
   title?: string;
@@ -26,32 +27,25 @@ export const LoginForm: React.FC<LoginFormProps> = ({
   onForgotPassword,
   onRegisterClick,
 }) => {
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [phoneError, setPhoneError] = useState('');
+  const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
-  // CAMBIAR A: Validación de celular
-  const validatePhone = (phone: string): boolean => {
-    // Regex para números de Perú (9 dígitos, empezando con 9)
-    const phoneRegex = /^9\d{8}$/;
-    
-    if (!phone) {
-      setPhoneError('El número de celular es requerido');
+  // Validación de email
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email) {
+      setEmailError('El correo electrónico es requerido');
       return false;
     }
-    
-    // Eliminar espacios y caracteres no numéricos
-    const cleanPhone = phone.replace(/\D/g, '');
-    
-    if (!phoneRegex.test(cleanPhone)) {
-      setPhoneError('Ingresa un número válido (9 dígitos)');
+    if (!emailRegex.test(email)) {
+      setEmailError('Ingresa un correo electrónico válido');
       return false;
     }
-  
-  setPhoneError('');
-  return true;
-};
+    setEmailError('');
+    return true;
+  };
 
   const validatePassword = (password: string): boolean => {
     if (!password) {
@@ -66,16 +60,36 @@ export const LoginForm: React.FC<LoginFormProps> = ({
     return true;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [backendError, setBackendError] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    const isPhoneValid = validatePhone(phoneNumber);
+    setBackendError(null);
+    const isEmailValid = validateEmail(email);
     const isPasswordValid = validatePassword(password);
-    
-    if (isPhoneValid && isPasswordValid && onSubmit) {
-      // Limpiar el número de teléfono antes de enviarlo (eliminar espacios y caracteres no numéricos)
-      const cleanPhone = phoneNumber.replace(/\D/g, '');
-      onSubmit({ num_celular: cleanPhone, password });
+    if (isEmailValid && isPasswordValid) {
+      try {
+        const response = await fetch('http://localhost:8000/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await response.json();
+        if (response.ok) {
+          // Guardar token y email en localStorage
+          if (data.access_token) {
+            localStorage.setItem('access_token', data.access_token);
+            localStorage.setItem('user_email', email);
+          }
+          if (onSubmit) onSubmit({ email, password });
+          navigate('/'); // Redirige al HomePage
+        } else {
+          setBackendError(data.detail || 'Error de autenticación');
+        }
+      } catch (err) {
+        setBackendError('No se pudo conectar al servidor');
+      }
     }
   };
 
@@ -91,19 +105,23 @@ export const LoginForm: React.FC<LoginFormProps> = ({
           {error}
         </div>
       )}
+      {backendError && (
+        <div className="ubikha-login-form__error">
+          {backendError}
+        </div>
+      )}
 
       <form onSubmit={handleSubmit} className="ubikha-login-form__form">
         <Input
-        type="tel"
-        label="Número de celular"
-        placeholder="999 999 999"
-        value={phoneNumber}
-        onChange={(e) => setPhoneNumber(e.target.value)}
-        error={!!phoneError}
-        errorMessage={phoneError}
-        required
-        name="phone"
-        maxLength={9}
+          type="email"
+          label="Correo electrónico"
+          placeholder="tucorreo@ejemplo.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          error={!!emailError}
+          errorMessage={emailError}
+          required
+          name="email"
         />
 
         <Input
