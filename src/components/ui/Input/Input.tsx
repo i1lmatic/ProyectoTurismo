@@ -16,6 +16,7 @@ export interface InputProps {
   maxLength?: number;
   min?: string;
   max?: string;
+  autoComplete?: string;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -64,6 +65,7 @@ export const Input: React.FC<InputProps> = ({
         min={min}
         max={max}
         className={inputClasses}
+        autoComplete={props.autoComplete}
         {...props}
       />
       

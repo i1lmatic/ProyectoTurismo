@@ -122,6 +122,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
           errorMessage={emailError}
           required
           name="email"
+
         />
 
         <Input
@@ -134,6 +135,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
           errorMessage={passwordError}
           required
           name="password"
+          autoComplete="current-password"
         />
 
         {showForgotPassword && (

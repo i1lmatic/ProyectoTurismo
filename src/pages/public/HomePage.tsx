@@ -1,34 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Footer, Features, HeroSection, Header, Locations, FeaturedActivities, MadreDeDiosSection } from '../../components/layout';
-import UserCard from '../../components/ui/UserCard/UserCard';
 
-const HomePage: React.FC = () => {
-  const [userName, setUserName] = useState<string | null>(null);
-  const [userEmail, setUserEmail] = useState<string | null>(null);
-  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
-  const [showCard, setShowCard] = useState(false);
+interface HomePageProps {
+  isHomePage?: boolean;
+}
 
-  useEffect(() => {
-    const token = localStorage.getItem('access_token');
-    if (token) {
-      fetch('http://localhost:8000/auth/me', {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      })
-        .then(res => res.json())
-        .then(data => {
-          if (data) {
-            setUserName(data.nombre || null);
-            setUserEmail(data.email || null);
-            setAvatarUrl(data.avatar_url || null);
-          }
-        })
-        .catch(() => {});
-    }
-  }, []);
-
+function HomePage() {
+  // Datos para las features que coinciden con la imagen
   const featuresData = {
     mainTitle: "",
     items: [
@@ -82,42 +60,14 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="app-container">
-      <Header isHomePage={true} />
-      {userName && userEmail && (
-        <>
-          {/* Avatar flotante */}
-          <div
-            id="usercard-avatar"
-            style={{
-              position: 'fixed',
-              top: 20,
-              right: 20,
-              zIndex: 1100,
-              width: 44,
-              height: 44,
-              borderRadius: '50%',
-              background: '#e1e4e8',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontWeight: 'bold',
-              fontSize: '1.3rem',
-              color: '#555',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
-              cursor: 'pointer',
-            }}
-            onClick={() => setShowCard((v) => !v)}
-          >
-            {userName.trim()[0].toUpperCase()}
-          </div>
-          {/* Panel desplegable */}
-          {showCard && (
-            <div id="usercard-panel" style={{position: 'fixed', top: 70, right: 20, zIndex: 1200}}>
-              <UserCard name={userName} email={userEmail} avatarUrl={avatarUrl || undefined} onLogout={handleLogout} />
-            </div>
-          )}
-        </>
+      {/* Mostrar el nombre del usuario en la parte superior si está logueado */}
+      {user && (
+        <div style={{width: '100%', background: '#f3f3f3', padding: '8px 0', textAlign: 'center', fontWeight: 'bold'}}>
+          Bienvenido, {user.nombre} {user.apellido}
+        </div>
       )}
+      <Header isHomePage={true} />
+      
       <HeroSection
         images={[
           "https://live.staticflickr.com/8266/8746178810_7cf99099c1_h.jpg",
@@ -125,14 +75,16 @@ const HomePage: React.FC = () => {
           "https://live.staticflickr.com/5489/9387084053_983025f3d6_h.jpg"
         ]}
       />
-      <Features
-        mainTitle={featuresData.mainTitle}
-        items={featuresData.items}
+      
+      <Features 
+        mainTitle={featuresData.mainTitle} 
+        items={featuresData.items} 
       />
       <Locations />
       <MadreDeDiosSection />
       <FeaturedActivities />
-      <Footer
+
+      <Footer 
         companyName="Turismoo verde"
         year={2025}
       />
