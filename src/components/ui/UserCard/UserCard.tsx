@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './UserCard.css';
 
 interface UserCardProps {
@@ -6,6 +7,11 @@ interface UserCardProps {
   email: string;
   avatarUrl?: string;
   onLogout: () => void;
+  esOperador?: boolean;
+  esVerificado?: boolean;
+  telefono?: string;
+  pais?: string;
+  ciudad?: string;
 }
 
 const getInitial = (name: string) => {
@@ -13,7 +19,9 @@ const getInitial = (name: string) => {
   return name.trim()[0].toUpperCase();
 };
 
-export const UserCard: React.FC<UserCardProps> = ({ name, email, avatarUrl, onLogout }) => {
+export const UserCard: React.FC<UserCardProps> = ({ name, email, avatarUrl, onLogout, esOperador, esVerificado, telefono, pais, ciudad }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="user-card">
       <div className="user-card__avatar">
@@ -25,6 +33,19 @@ export const UserCard: React.FC<UserCardProps> = ({ name, email, avatarUrl, onLo
       </div>
       <div className="user-card__name">{name}</div>
       <div className="user-card__email">{email}</div>
+      {esOperador ? (
+        <div className="user-card__role" style={{color: '#2980b9', fontWeight: 600, marginBottom: 8}}>
+          Operador turístico {esVerificado ? '✔️' : '(pendiente)'}
+        </div>
+      ) : (
+        <button
+          className="user-card__operator"
+          style={{background: '#2980b9', color: '#fff', border: 'none', borderRadius: 6, padding: '8px 16px', cursor: 'pointer', marginBottom: 8, fontWeight: 600}}
+          onClick={() => navigate('/convert-to-operator')}
+        >
+          ¿Eres empresa? Conviértete en operador
+        </button>
+      )}
       <button
         className="user-card__logout"
         onClick={onLogout}

@@ -1,8 +1,13 @@
+
 import React, { useEffect, useState } from 'react';
 import { Footer, Features, HeroSection, Header, Locations, FeaturedActivities, MadreDeDiosSection } from '../../components/layout';
+import axios from 'axios';
+import UserCard from '../../components/ui/UserCard/UserCard';
 
-interface HomePageProps {
-  isHomePage?: boolean;
+interface User {
+  nombre?: string;
+  apellido?: string;
+  email?: string;
 }
 
 function HomePage() {
@@ -37,37 +42,12 @@ function HomePage() {
     ]
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('user_email');
-    setShowCard(false);
-    window.location.reload();
-  };
 
-  // Cierra el panel al hacer clic fuera
-  React.useEffect(() => {
-    if (!showCard) return;
-    const handleClick = (e: MouseEvent) => {
-      const card = document.getElementById('usercard-panel');
-      const avatar = document.getElementById('usercard-avatar');
-      if (card && !card.contains(e.target as Node) && avatar && !avatar.contains(e.target as Node)) {
-        setShowCard(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
-  }, [showCard]);
 
   return (
     <div className="app-container">
-      {/* Mostrar el nombre del usuario en la parte superior si está logueado */}
-      {user && (
-        <div style={{width: '100%', background: '#f3f3f3', padding: '8px 0', textAlign: 'center', fontWeight: 'bold'}}>
-          Bienvenido, {user.nombre} {user.apellido}
-        </div>
-      )}
-      <Header isHomePage={true} />
       
+      <Header isHomePage={true} />
       <HeroSection
         images={[
           "https://live.staticflickr.com/8266/8746178810_7cf99099c1_h.jpg",
@@ -75,7 +55,6 @@ function HomePage() {
           "https://live.staticflickr.com/5489/9387084053_983025f3d6_h.jpg"
         ]}
       />
-      
       <Features 
         mainTitle={featuresData.mainTitle} 
         items={featuresData.items} 
@@ -83,7 +62,6 @@ function HomePage() {
       <Locations />
       <MadreDeDiosSection />
       <FeaturedActivities />
-
       <Footer 
         companyName="Turismoo verde"
         year={2025}

@@ -93,6 +93,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
     }
   };
 
+
   return (
     <div className="ubikha-login-form">
       <div className="ubikha-login-form__header">
@@ -167,7 +168,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
           <button
             type="button"
             className="ubikha-login-form__register-link"
-            onClick={onRegisterClick}
+            onClick={() => navigate('/register')}
           >
             Regístrate aquí
           </button>
